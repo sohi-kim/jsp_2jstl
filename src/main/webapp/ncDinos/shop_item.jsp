@@ -2,6 +2,7 @@
 <%@page import="dao.FanItemDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,8 +42,8 @@
 		</div>
 		<div style="margin-left: 20px;width: 300px;" class="cont-box">
 			<h3>${vo.title }</h3>
-			<h3>정가 :    원</h3>
-			<h3>판매가 :    원</h3>
+			<h4>정가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
+			<h4>판매가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
 			<div class="orderCount" 
 			    style="border-bottom: 1px solid gray;border-top: 1px solid gray">
 				주문 수량 : 
