@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+</style>
 </head>
 <body>
 <%
@@ -30,7 +33,33 @@
 	
 %>
 	<h3>구매</h3>
-	<h3>${vo.title }</h3>
+	<hr/>
+	<div style="display: flex;width : 800px;margin: auto" class="container">
+		<div style="width: 500px;height: 550px;" class="img-box">
+		<!-- img 이미지 크기는 부모요소 div 의 100% -->
+			<img alt="${vo.title }" src="product/${vo.filename }" width="100%">
+		</div>
+		<div style="margin-left: 20px;width: 300px;" class="cont-box">
+			<h3>${vo.title }</h3>
+			<h3>정가 :    원</h3>
+			<h3>판매가 :    원</h3>
+			<div class="orderCount" 
+			    style="border-bottom: 1px solid gray;border-top: 1px solid gray">
+				주문 수량 : 
+				<input type="number" min="1" max="999" size="20"
+					   style="padding:5px 10px; margin: 10px;font-size: 1.3rem"
+				/>
+			</div>
+			<div style="margin-top: 20px;" class="orderButton">
+				<button style="padding: 10px 20px;font-size: 1.3rem">구매하기</button>
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<div style="text-align: center;">
+		<button style="padding: 10px 20px;font-size: 1.3rem" 
+			onclick="location.href='ncDinos_shop.jsp'">목록</button>
+	</div>
 
 </body>
 </html>
