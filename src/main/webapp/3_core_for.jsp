@@ -9,13 +9,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<title>프로젝트 2 : 3_Parameter.jsp</title>
+<link rel="stylesheet" href="css/table.css">
+<title>프로젝트 2 : 3_core_for.jsp</title>
 </head>
 <body>
 <h2>상품 카테고리</h2>
-<!-- a 태그로 메뉴의 링크 주소 설정. 추가로 ?파라미터이름=파라미터값 전달.
-     a 태그의 href 의 url 주소값으로 새로운 요청(request)을 서버로 보냅니다.
+<!-- 3_parameter.jsp 의 forEach는 items 속성을 사용합니다.
+     자바의 향상for문과 동작 방식이 같습니다. `리스트에서는 대부분 items 속성으로 반복합니다.`
+     여기서는 기존 for문의 index 를 사용합니다.(형식만 참고하세요.)
+     core 태그 속성 begin,end 설정 필요합니다.
 -->
 <ul>
 	<li><a href="3_Parameter.jsp?category=A1">국내산 과일</a></li>
@@ -42,7 +44,7 @@
 	pageContext.setAttribute("list", list);
 %>
 	<h2>카테고리별 상품 목록</h2>
-	<table class="table table-striped">
+	<table>
 		<tr id="productH">
 			<th style="width:100px;">번호</th>
 			<th>카테고리</th>
@@ -50,17 +52,15 @@
 			<th>상품코드</th>
 			<th>가격</th>
 		</tr>
-		<!-- for (Product temp : list)  -->
-		<!-- varStatus 속성에 변수 이름을 지정하면 index 값을 가져올수 있음. -->
-		<c:forEach items="${list }" var="temp" varStatus="status">
+		<c:forEach begin="0" end="${list.size() }" var="i">
+		<!-- i번째 항목을 가져와서(list.get(i)) temp 변수에 저장합니다. -->
+			<c:set var="temp" value="${list[i] }"/>
 			<tr id="product">
-				<td style="width:100px;">${status.index }</td>
+				<td style="width:100px;">${i+1 }</td>
 				<td>${temp.category }</td>
 				<td>${temp.pname }</td>  <!-- 왼쪽 정렬 -->
 				<td>${temp.pcode }</td>
-				<td>
-					<fmt:formatNumber value="${temp.price }" pattern="##,###,###"/>
-				</td> <!-- 오른쪽 정렬 -->
+				<td>${temp.price }</td> <!-- 오른쪽 정렬 -->
 			</tr>
 		</c:forEach>
 	</table>
