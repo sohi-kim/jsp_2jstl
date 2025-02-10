@@ -71,13 +71,9 @@ i.ic-home {
   background-size: contain;
 }
 
-.item-list {
-	display: flex; flex-wrap: wrap; 
-}
-
 .item-list > li {
       /* float 스타일이 적용된 요소는 부모 요소에서 벗어납니다. */
-      /*float: left;*/
+      float: left;
       margin: 8px 8px 50px;
 }
 

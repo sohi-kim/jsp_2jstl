@@ -1,3 +1,6 @@
+<%@page import="vo.FanItemVO"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.FanItemDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
@@ -14,6 +17,12 @@
   <link rel="stylesheet" href="css/fanitem.css">
 </head>
 <body>
+<%
+	FanItemDao dao = FanItemDao.getInstance();
+	List<FanItemVO> list = dao.selectAllItems();
+	pageContext.setAttribute("list", list);
+
+%>
   <!--  상단(헤더) 네비게이션 -->
   <div id="header">
     <div class="desktop-only">
@@ -70,7 +79,6 @@
         </ul>
         <!-- 상품 목록 -->
          <div class="cont-box">
-
           <!-- 상품 목록 이미지 -->
            <ul class="item-list">
          <!--  상품 1개가 li 요소 1개로 작성.  list 애트리뷰트에서 하나씩 가져온 vo 는 FanItem 타입 -->
@@ -80,11 +88,8 @@
                     </div>
                     <!-- 상품명,가격 -->
                      <div class="desc">
-                        <h6>
-                        	<c:out value="${vo.title }"/>
-                        </h6>
-                        <div class="price">
-                          <fmt:formatNumber value="${vo.price }" pattern="###,###"/>
+                        <h6><c:out value="${vo.title }"/></h6>
+                        <div class="price"><fmt:formatNumber value="${vo.price }" pattern="###,###"/>
                           <span class="won"> 원</span>
                         </div>
                         <div class="label-wrap">
