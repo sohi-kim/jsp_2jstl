@@ -33,6 +33,33 @@ public class FanItemDao {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
     
+    // 1개 행 조회 : List 사용 안합니다.
+    public FanItemVO selectByPk(int seq) {
+    	FanItemVO vo = null;
+    	String sql ="SELECT * FROM tbl_fanitem WHERE seq = ?";
+    	try (
+                Connection connection = getConnection();
+                PreparedStatement pstmt = connection.prepareStatement(sql);
+            ){
+                pstmt.setInt(1, seq);
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    vo = new FanItemVO(rs.getInt(1),  
+                                          rs.getString(2),   
+                                          rs.getInt(3),  
+                                          rs.getInt(4),
+                                          rs.getInt(5),
+                                          rs.getString(6));    
+                }
+            }catch (SQLException e) {
+                System.out.println("예외 : " + e.getMessage());
+            }
+    	return vo;
+    }
+    
+    
+    
+    // 여러개 행 조회 : List 사용 합니다.
     public List<FanItemVO> selectAllItems(){
     	List<FanItemVO>  list = null;
     	String sql = "SELECT * FROM tbl_fanitem ORDER BY seq";

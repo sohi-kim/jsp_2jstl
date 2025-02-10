@@ -11,6 +11,15 @@ create table tbl_fanitem (
 create sequence fanitem_seq;
 
 select * from TBL_FANITEM where seq=5;
+
+
+
+
+
+
+
+
+
 update TBL_FANITEM
 set title='승리요정 슈야토야 토야 키링'
 where seq=5;

@@ -83,8 +83,10 @@
            <ul class="item-list">
          <!--  상품 1개가 li 요소 1개로 작성.  list 애트리뷰트에서 하나씩 가져온 vo 는 FanItem 타입 -->
              <c:forEach items="${list }" var="vo">   
-                <li>
-                    <div class="img" style="background-image: url(product/${vo.filename});">
+                <li style="cursor: pointer;" 
+                	onclick="location.href='shop_item.jsp?seq=${vo.seq}'">
+                    <div class="img" 
+                    	style="background-image: url(product/${vo.filename});">
                     </div>
                     <!-- 상품명,가격 -->
                      <div class="desc">
