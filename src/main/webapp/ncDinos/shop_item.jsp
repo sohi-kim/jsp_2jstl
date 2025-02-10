@@ -9,7 +9,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+/* 태그의 style 속성을 여기로 옮기세요. */
+  .container {
+  	display: flex;width : 800px;margin: auto;
+  }
+  
+  
 </style>
 </head>
 <body>
