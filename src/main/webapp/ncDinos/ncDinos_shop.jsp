@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,198 +73,31 @@
 
           <!-- 상품 목록 이미지 -->
            <ul class="item-list">
-                <!--  상품 1개가 li 요소 1개로 작성 -->
+         <!--  상품 1개가 li 요소 1개로 작성.  list 애트리뷰트에서 하나씩 가져온 vo 는 FanItem 타입 -->
+             <c:forEach items="${list }" var="vo">   
                 <li>
-                    <div class="img" style="background-image: url(product/1.jpg);">
+                    <div class="img" style="background-image: url(product/${vo.filename});">
                     </div>
                     <!-- 상품명,가격 -->
                      <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
+                        <h6>
+                        	<c:out value="${vo.title }"/>
+                        </h6>
+                        <div class="price">
+                          <fmt:formatNumber value="${vo.price }" pattern="###,###"/>
                           <span class="won"> 원</span>
                         </div>
                         <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
+                          <c:if test="${vo.newitem == 1 }">
+                          	<span class="label blue">신상품</span>
+                          </c:if>
+                          <c:if test="${vo.soldout == 1 }">
+                          	<span class="label gray">품절</span>
+                          </c:if>
                         </div>
                      </div>
                 </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/2.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/3.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/4.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/5.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/6.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/7.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/8.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/9.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/10.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/11.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
-                <!--  상품 1개가 li 요소 1개로 작성 -->
-                <li>
-                    <div class="img" style="background-image: url(product/12.jpg);">
-                    </div>
-                    <!-- 상품명,가격 -->
-                     <div class="desc">
-                        <h6>레시 키링</h6>
-                        <div class="price">16,000
-                          <span class="won">원</span>
-                        </div>
-                        <div class="label-wrap">
-                          <span class="label blue">신상품</span>
-                          <span class="label gray">품절</span>
-                        </div>
-                     </div>
-                </li>
+              </c:forEach>  
            </ul>
          </div>
       </div>
