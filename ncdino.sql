@@ -12,18 +12,23 @@ create sequence fanitem_seq;
 
 select * from TBL_FANITEM where seq=5;
 
+-- // 테이블명 : tbl_fanitem_order 	
+-- // 구매 관리를 위한 PK 컬럼 : order_seq 
+-- // 구매 날짜는 default sysdate
+
+create table tbl_fanitem_order (
+	oreder_seq number(8) primary key,
+	userid varchar2(200) not null,
+	seq number(8) not null,
+	count number(8) not null,
+	pay number(8) not null,
+	order_date date default sysdate
+);
+
+create sequence tblorder_seq start with 1001;
 
 
-
-
-
-
-
-
-update TBL_FANITEM
-set title='승리요정 슈야토야 토야 키링'
-where seq=5;
-
+-- tbl_fanitem 테이블 샘플행 추가
 insert into tbl_fanitem (seq,title,price,newitem,soldout,filename)
 values 
 (fanitem_seq.nextval , '조구만 브라키오 인형 머리띠', 19000, 1,0,'1.jpg');
