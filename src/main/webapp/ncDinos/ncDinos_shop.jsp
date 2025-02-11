@@ -41,7 +41,7 @@
       <div class="nav-wrap">
           <div class="nav-con">
               <img src="img/img-header-emblem@2x.png" alt="" 
-              		onclick="location.href='/2JSTL/'" style="cursor: pointer;">
+              		onclick=pu style="cursor: pointer;">
               <ul class="gnb-wrap">
                   <li onclick="movePage('/product/list/UN')">유니폼</li>
                   <li onclick="movePage('/product/list/HA')">모자</li>

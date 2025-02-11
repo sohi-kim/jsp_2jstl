@@ -47,15 +47,30 @@
 				<input type="number" min="1" max="999" size="20" value="1" />
 			</div>
 			<div class="orderButton">
-				<button>구매하기</button>
+			<!-- 구매 요구사항 : 반드시 로그인 상태에서 실행. -->
+				<button onclick="moveLogin()">구매하기</button>
 			</div>
 		</div>
 	</div>
 	<hr/>
 	<div style="text-align: center;">
-		<button style="padding: 10px 20px;font-size: 1.3rem" 
-			onclick="location.href='ncDinos_shop.jsp'">목록</button>
+		<button onclick="location.href='ncDinos_shop.jsp'">목록</button>
 	</div>
-
+	<script type="text/javascript">
+		const useraccount = '${user}'     // jsp 의 애트리뷰트 user를 가져옵니다.
+		function moveLogin(){
+			if(useraccount == '') {
+				if(confirm('구매는 로그인이 필요합니다. 로그인 하시겠습니까?')){
+					location.href='../5_login.jsp'   // ../ 는 부모 폴더로 이동
+				}
+			}
+		}
+	
+	</script>
 </body>
 </html>
+
+
+
+
+
