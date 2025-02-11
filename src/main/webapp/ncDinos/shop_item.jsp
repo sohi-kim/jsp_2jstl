@@ -7,15 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-/* 태그의 style 속성을 여기로 옮기세요. */
-  .container {
-  	display: flex;width : 800px;margin: auto;
-  }
-  
-  
-</style>
+<title>NCDinos Fan Item</title>
+<link rel="stylesheet" href="css/orderItem.css">
 </head>
 <body>
 <%
@@ -40,24 +33,21 @@
 %>
 	<h3>구매</h3>
 	<hr/>
-	<div style="display: flex;width : 800px;margin: auto" class="container">
-		<div style="width: 500px;height: 550px;" class="img-box">
+	<div class="container">
+		<div class="img-box">
 		<!-- img 이미지 크기는 부모요소 div 의 100% -->
 			<img alt="${vo.title }" src="product/${vo.filename }" width="100%">
 		</div>
-		<div style="margin-left: 20px;width: 300px;" class="cont-box">
+		<div class="cont-box">
 			<h3>${vo.title }</h3>
 			<h4>정가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
 			<h4>판매가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
-			<div class="orderCount" 
-			    style="border-bottom: 1px solid gray;border-top: 1px solid gray">
+			<div class="orderCount">
 				주문 수량 : 
-				<input type="number" min="1" max="999" size="20"
-					   style="padding:5px 10px; margin: 10px;font-size: 1.3rem"
-				/>
+				<input type="number" min="1" max="999" size="20" value="1" />
 			</div>
-			<div style="margin-top: 20px;" class="orderButton">
-				<button style="padding: 10px 20px;font-size: 1.3rem">구매하기</button>
+			<div class="orderButton">
+				<button>구매하기</button>
 			</div>
 		</div>
 	</div>
