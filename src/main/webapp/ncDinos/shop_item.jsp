@@ -38,19 +38,31 @@
 		<!-- img 이미지 크기는 부모요소 div 의 100% -->
 			<img alt="${vo.title }" src="product/${vo.filename }" width="100%">
 		</div>
-		<div class="cont-box">
-			<h3>${vo.title }</h3>
-			<h4>정가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
-			<h4>판매가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
-			<div class="orderCount">
-				주문 수량 : 
-				<input type="number" min="1" max="999" size="20" value="1" />
+		<!-- 사용자가 선택 또는 입력하는 것이 아니고
+		     기존의 값을 파라미터 전달해야 하는 것을 type="hidden" 으로 합니다.
+		 -->
+		<form action="fanitem_order.jsp" method="post">
+			<input type="hidden" name="seq" value="${vo.seq }" />
+			<input type="hidden" name="price" value="${vo.price }" />
+			<div class="cont-box">
+				<h3>${vo.title }</h3>
+				<h4>정가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
+				<h4>판매가 : <fmt:formatNumber value="${vo.price }" pattern="###,###"/> 원</h4>
+				<div class="orderCount">
+					주문 수량 : 
+					<input type="number" name="count" min="1" max="999" size="20" value="1"  />
+				</div>
+				<div class="orderButton">
+				<!-- 구매 요구사항 : 반드시 로그인 상태에서 실행. -->
+				<!-- 1번 프로젝트의 4_register.jsp 와 다른점(새로운 방법)
+					1) button 의 type : submit 을 button 으로 변경
+					2) 자바스크립트 이벤트 : onsubmit 을 onclick 으로 변경
+				 -->
+				<button type="button" 
+				      onclick="orderItem()">구매하기</button>
+				</div>
 			</div>
-			<div class="orderButton">
-			<!-- 구매 요구사항 : 반드시 로그인 상태에서 실행. -->
-				<button onclick="moveLogin()">구매하기</button>
-			</div>
-		</div>
+		</form>
 	</div>
 	<hr/>
 	<div style="text-align: center;">
@@ -58,10 +70,14 @@
 	</div>
 	<script type="text/javascript">
 		const useraccount = '${user}'     // jsp 의 애트리뷰트 user를 가져옵니다.
-		function moveLogin(){
-			if(useraccount == '') {
+		function orderItem(){
+			if(useraccount == '') {  // 로그인 하지 않은 상태
 				if(confirm('구매는 로그인이 필요합니다. 로그인 하시겠습니까?')){
 					location.href='../5_login.jsp'   // ../ 는 부모 폴더로 이동
+				}
+			}else {   // 로그인 한 상태
+				if(confirm('구매 하시겠습니까?')) {
+					document.forms[0].submit()		//첫번째 form 요소의 값을 서버로 제출
 				}
 			}
 		}
